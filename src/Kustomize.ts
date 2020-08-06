@@ -15,7 +15,7 @@ class Kustomize {
   async edit(repoPath: string): Promise<boolean> {
     const { base, commands } = this.config;
 
-    const fullPath: string = join([repoPath, base]);
+    const fullPath: string = join(repoPath, base);
 
     // kustomize cli does not have a `--dir-base` option
     if ((await this.cmd.run(["cd", fullPath])) === false) {

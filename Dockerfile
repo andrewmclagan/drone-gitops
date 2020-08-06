@@ -25,7 +25,7 @@ ADD . /var/drone-gitops
 
 WORKDIR /var/drone-gitops
 
-RUN deno bundle -A --unstable ./src/index.ts ./drone-gitops.js
+RUN deno bundle --unstable ./src/index.ts ./drone-gitops.js
 
 ENTRYPOINT ["deno"]
 

@@ -2,7 +2,7 @@ import Env from "./Env.ts";
 import Cmd from "./Cmd.ts";
 import Plugin from "./Plugin.ts";
 
-const repository = Env.get("PLUGIN_REPOSITORY");
+const repository = Env.get("PLUGIN_REPO");
 
 const kustomize = Env.get("PLUGIN_KUSTOMIZE");
 
