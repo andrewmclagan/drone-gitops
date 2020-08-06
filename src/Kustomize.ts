@@ -20,6 +20,12 @@ class Kustomize {
 
     log(`kustomize.yaml path: ${fullPath}`);
 
+    await this.cmd.run(["ls", '-la']);
+
+    await this.cmd.run(["ls", '-la',  join(repoPath, 'overlays')]);
+
+    await this.cmd.run(["ls", '-la',  join(repoPath, 'overlays/staging')]);
+
     // kustomize cli does not have a `--dir-base` option
     if ((await this.cmd.run(["cd", fullPath])) === false) {
       return false;

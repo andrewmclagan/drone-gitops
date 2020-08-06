@@ -23,7 +23,7 @@ class Repository {
   async clone(): Promise<string> {
     await this.writeNetrc();
 
-    const { branch = "master", remote } = this.config;
+    const { branch, remote } = this.config;
 
     const path: string = await Deno.makeTempDir();
 
