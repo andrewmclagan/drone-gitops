@@ -33,6 +33,7 @@ class Repository {
       "--single-branch",
       `--branch=${branch}`,
       "--depth=1",
+      "--verbose",
       remote,
       path,
     ]);

@@ -25,6 +25,8 @@ class Kustomize {
       return false;
     }
 
+    await this.cmd.run(["ls", '-la']);
+
     for (let i = 0; i < commands.length; i++) {
       const parts: string[] = commands[i].split(" ");
 
