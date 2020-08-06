@@ -3,10 +3,10 @@ type: docker
 name: default
 steps:
 
-  - name: test
-    image: hayd/alpine-deno:1.2.0
-    commands:
-      - deno test --unstable -A ./src/**/*.spec.ts
+  # - name: test
+  #   image: hayd/alpine-deno:1.2.0
+  #   commands:
+  #     - deno test --unstable -A ./src/**/*.spec.ts
 
   - name: build
     image: plugins/docker
