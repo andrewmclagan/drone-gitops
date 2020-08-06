@@ -27,6 +27,8 @@ WORKDIR /var/drone-gitops
 
 RUN deno bundle --unstable ./src/index.ts ./drone-gitops.js
 
-ENTRYPOINT ["deno"]
+# ENTRYPOINT ["deno"]
 
-CMD ["run","-A","--unstable","/var/drone-gitops/drone-gitops.js"]
+# CMD ["run","-A","--unstable","/var/drone-gitops/drone-gitops.js"]
+
+ENTRYPOINT ["run.sh"]
