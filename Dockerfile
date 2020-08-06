@@ -1,4 +1,4 @@
-FROM hayd/alpine-deno:1.2.0 AS build
+FROM hayd/debian-deno:1.2.2 AS build
 
 ENV KUSTOMIZE_VER 3.3.1
 
