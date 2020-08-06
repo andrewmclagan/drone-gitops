@@ -1,4 +1,5 @@
 import { join } from "https://deno.land/std@0.63.0/path/mod.ts";
+import { exists } from "https://deno.land/std@0.63.0/fs/mod.ts";
 import { KustomizeConfig } from "./config.ts";
 import Cmd from "./Cmd.ts";
 import { log } from "./utils.ts";
@@ -20,22 +21,13 @@ class Kustomize {
 
     log(`kustomize.yaml path: ${fullPath}`);
 
-    await this.cmd.run(["ls", '-la']);
-
-    await this.cmd.run(["ls", '-la',  join(repoPath, 'overlays')]);
-
-    await this.cmd.run(["ls", '-la',  join(repoPath, 'overlays/staging')]);
-
-    await this.cmd.run(["ls", '-la',  fullPath]);
-
-    await this.cmd.run(["cd", "/drone/src"]);
-
-    await this.cmd.run(["cd", "/drone/src/"]);
+    if (await exists(`${fullPath}/kustomization.yaml`) === false) {
+        log(`${fullPath}/kustomization.yaml does not exist`);
+        return false;
+    }
 
     // kustomize cli does not have a `--dir-base` option
-    if ((await this.cmd.run(["cd", fullPath])) === false) {
-      return false;
-    }
+    await this.cmd.run(["cd", fullPath])
 
     for (let i = 0; i < commands.length; i++) {
       const parts: string[] = commands[i].split(" ");
