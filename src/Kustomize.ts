@@ -26,10 +26,6 @@ class Kustomize {
       return false;
     }
 
-    await this.cmd.run(["echo","$PWD"]);
-
-    await this.cmd.run(["cd","$PWD"]);
-
     await this.cmd.run(["cd","/drone"]);
 
     await this.cmd.run(["cd","/tmp"]);

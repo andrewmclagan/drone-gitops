@@ -8,7 +8,9 @@ ENV KUSTOMIZE_VER 3.3.1
 #--------------------------------------------------------------------------
 #
 
-RUN apk --no-cache add git curl gettext 
+# RUN apk --no-cache add git curl gettext 
+RUN apt-get update 
+RUN apt-get -y install git curl gettext 
 
 RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/v${KUSTOMIZE_VER}/kustomize_${KUSTOMIZE_VER}_linux_amd64  -o /usr/bin/kustomize \
     && chmod +x /usr/bin/kustomize
