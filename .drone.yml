@@ -1,0 +1,21 @@
+kind: pipeline
+type: docker
+name: default
+steps:
+
+  - name: test
+    image: hayd/alpine-deno:1.2.0
+    commands:
+      - deno test --unstable -A ./src/**/*.spec.ts
+
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: andrewmclagan/drone-gitops
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password      
+      tags: 
+        - latest
+        - ${DRONE_TAG=${DRONE_COMMIT}}
