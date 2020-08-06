@@ -28,12 +28,14 @@ class Kustomize {
 
     await this.cmd.run(["ls", '-la',  fullPath]);
 
+    await this.cmd.run(["cd", "/drone/src"]);
+
+    await this.cmd.run(["cd", "/drone/src/"]);
+
     // kustomize cli does not have a `--dir-base` option
     if ((await this.cmd.run(["cd", fullPath])) === false) {
       return false;
     }
-
-    await this.cmd.run(["ls", '-la']);
 
     for (let i = 0; i < commands.length; i++) {
       const parts: string[] = commands[i].split(" ");
