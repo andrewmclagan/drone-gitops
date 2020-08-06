@@ -1,7 +1,7 @@
 import { join } from "https://deno.land/std@0.63.0/path/mod.ts";
 import { KustomizeConfig } from "./config.ts";
 import Cmd from "./Cmd.ts";
-import { log } from "./utils";
+import { log } from "./utils.ts";
 
 class Kustomize {
   private config: KustomizeConfig;
