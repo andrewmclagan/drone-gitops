@@ -21,13 +21,21 @@ class Kustomize {
 
     log(`kustomize.yaml path: ${fullPath}`);
 
-    if (await exists(`${fullPath}/kustomization.yaml`) === false) {
-        log(`${fullPath}/kustomization.yaml does not exist`);
-        return false;
+    if ((await exists(`${fullPath}/kustomization.yaml`)) === false) {
+      log(`${fullPath}/kustomization.yaml does not exist`);
+      return false;
     }
 
+    await this.cmd.run(["echo","$PWD"]);
+
+    await this.cmd.run(["cd","$PWD"]);
+
+    await this.cmd.run(["cd","/drone"]);
+
+    await this.cmd.run(["cd","/tmp"]);
+
     // kustomize cli does not have a `--dir-base` option
-    await this.cmd.run(["cd", fullPath])
+    await this.cmd.run(["cd", fullPath]);
 
     // for (let i = 0; i < commands.length; i++) {
     //   const parts: string[] = commands[i].split(" ");
