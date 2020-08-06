@@ -29,13 +29,13 @@ class Kustomize {
     // kustomize cli does not have a `--dir-base` option
     await this.cmd.run(["cd", fullPath])
 
-    for (let i = 0; i < commands.length; i++) {
-      const parts: string[] = commands[i].split(" ");
+    // for (let i = 0; i < commands.length; i++) {
+    //   const parts: string[] = commands[i].split(" ");
 
-      if ((await this.cmd.run(["kustomize", ...parts])) === false) {
-        return false;
-      }
-    }
+    //   if ((await this.cmd.run(["kustomize", ...parts])) === false) {
+    //     return false;
+    //   }
+    // }
 
     return true;
   }
