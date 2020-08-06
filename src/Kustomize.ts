@@ -26,6 +26,8 @@ class Kustomize {
 
     await this.cmd.run(["ls", '-la',  join(repoPath, 'overlays/staging')]);
 
+    await this.cmd.run(["ls", '-la',  fullPath]);
+
     // kustomize cli does not have a `--dir-base` option
     if ((await this.cmd.run(["cd", fullPath])) === false) {
       return false;
