@@ -4,7 +4,9 @@ import Plugin from "./Plugin.ts";
 
 const repository = Env.get("PLUGIN_REPO");
 
-const kustomize = Env.get("PLUGIN_KUSTOMIZE");
+const basePath = Env.get("PLUGIN_BASE_PATH");
+
+const commands = Env.get("PLUGIN_KUSTOMIZE");
 
 const netrc = {
   machine: Env.get("DRONE_NETRC_MACHINE"),
@@ -14,12 +16,12 @@ const netrc = {
 
 let config = {
   kustomize: {
-    base: kustomize.base ?? ".",
-    commands: kustomize.edit ?? [],
+    base: basePath ?? ".",
+    commands: commands ?? [],
   },
   repository: {
-    remote: repository.remote,
-    branch: repository.branch ?? "master",
+    remote: repository,
+    branch: "master",
     netrc,
   },
 };
