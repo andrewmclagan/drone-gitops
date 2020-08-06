@@ -1,6 +1,7 @@
 import { join } from "https://deno.land/std@0.63.0/path/mod.ts";
 import { KustomizeConfig } from "./config.ts";
 import Cmd from "./Cmd.ts";
+import { log } from "./utils";
 
 class Kustomize {
   private config: KustomizeConfig;
@@ -16,6 +17,8 @@ class Kustomize {
     const { base, commands } = this.config;
 
     const fullPath: string = join(repoPath, base);
+
+    log(`kustomize.yaml path: ${fullPath}`);
 
     // kustomize cli does not have a `--dir-base` option
     if ((await this.cmd.run(["cd", fullPath])) === false) {
